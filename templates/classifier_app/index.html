@@ -2,7 +2,7 @@
 
 {% block content%}
 
-    <h2>Upload Image for Classification</h2>
+    <h3>Image Classifier</h3>
 
     
     <br>
@@ -10,14 +10,17 @@
     <form method="post" enctype="multipart/form-data" action="predictImage">
   
  {% csrf_token %}
- <div class="col-md-4 col-sm-4"><label for="fname">Upload Image File Here:</label> </div> <input name="filePath" type="file"><br><br>
+ <div class="col-md-4 col-sm-4"><label for="fname">Upload Image File Here:</label> <br></div> <input name="filePath" type="file"><br><br>
  <br>
+ <button type="submit" class="btn btn-light" value="Submit">Classify</button>
 
- 
- <input type="submit" value="Submit" ></div>
-
- <h2>The classification of the image is {{predictedLabel}}</h2>
+ <!-- <input type="submit" value="Submit" ></div> -->
+ <br>
+ {% if filePathName != None %}
  <img src={{filePathName}} alt='imagename'>
+ {% endif %}
+ <h2>{{predictedLabel}}</h2>
+
 
 
 </form>

@@ -12,16 +12,18 @@ import cv2,os,urllib.request
 import numpy as np
 from django.conf import settings
 
-json_file = open('models/model_mobilenet.json', 'r')
+json_file = open('/home/prathamesh/Fire-Smoke-Detection-WebApp/models/model_mobilenet.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 model = model_from_json(loaded_model_json)
-model.load_weights('models/weights_mobilenet.h5')
+model.load_weights('/home/prathamesh/Fire-Smoke-Detection-WebApp/models/weights_mobilenet.h5')
 
 
 class VideoCamera(object):
 	def __init__(self):
-		 self.video = cv2.VideoCapture(0,cv2.CAP_DSHOW)
+		self.video = cv2.VideoCapture(0,cv2.CAP_DSHOW)
+        
+
 
 	def __del__(self):
 		self.video.release()
@@ -68,7 +70,7 @@ class IPWebCam(object):
 
 class MaskDetect(object):
 	def __init__(self):
-		self.vs = VideoStream(src=0 + cv2.CAP_DSHOW,).start()
+		self.vs = VideoStream(src=0).start()
 
 	def __del__(self):
 		cv2.destroyAllWindows()

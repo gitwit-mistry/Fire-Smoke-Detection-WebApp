@@ -7,6 +7,9 @@ from live_detector_app.camera import VideoCamera, IPWebCam, MaskDetect, LiveWebC
 def index(request):
 	return render(request, 'live_detector_app/home.html')
 
+def new_new(request):
+	return render(request, 'live_detector_app/index.html')
+
 
 def gen(camera):
 	while True:

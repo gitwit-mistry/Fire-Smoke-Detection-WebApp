@@ -14,12 +14,12 @@ def index(request):
     return render(request,'classifier_app/index.html',context)
 
 
-json_file = open('./models/model_mobilenet.json', 'r')
+json_file = open('/home/prathamesh/Fire-Smoke-Detection-WebApp/models/model_mobilenet.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 nn_m = model_from_json(loaded_model_json)
 
-nn_m.load_weights('./models/weights_mobilenet.h5')
+nn_m.load_weights('/home/prathamesh/Fire-Smoke-Detection-WebApp/models/weights_mobilenet.h5')
 
 def predictImage(request):
     print(request)
@@ -28,7 +28,7 @@ def predictImage(request):
     fs = FileSystemStorage()
     filePathName=fs.save(fileobj.name,fileobj)
     filePathName=fs.url(filePathName)
-    testimage= '.'+filePathName
+    testimage= '/home/prathamesh/Fire-Smoke-Detection-WebApp'+filePathName
     img = image.load_img(testimage, target_size=(128, 128))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0) /255.0
@@ -37,11 +37,11 @@ def predictImage(request):
     predictedLabel = result_df.result.idxmax()
 
 
-    context={'filePathName':filePathName,'predictedLabel':predictedLabel}
+    context={'filePathName':filePathName,'predictedLabel':'The classification of the image is: '+predictedLabel}
     return render(request,'classifier_app/index.html',context)
 
 def viewDataBase(request):
-    listOfImages = os.listdir('./media/')
-    listOfImagesPath = ['./media/'+i for i in listOfImages]
+    listOfImages = os.listdir('/home/prathamesh/Fire-Smoke-Detection-WebApp/media/')
+    listOfImagesPath = ['/media/'+i for i in listOfImages]
     context={'listOfImagesPath':listOfImagesPath}
     return render(request,'classifier_app/viewDB.html',context)
