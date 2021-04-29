@@ -1,3 +1,7 @@
+{% extends 'classifier_app/headerPage.html' %}
+
+{% block content%}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,11 +24,13 @@
 </head>
  
 <body>
-<div id="container">
+
+
+  <h2 style="font-family: cursive;">Fire Smoke Recognizer</h2>
 	<video autoplay="true" id="videoElement">
 	
 	</video>
-</div>
+
 <script>
     var video = document.querySelector("#videoElement");
 
@@ -40,3 +46,5 @@
 </script>
 </body>
 </html>
+
+{% endblock %}

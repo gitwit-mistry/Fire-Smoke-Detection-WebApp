@@ -2,3 +2,8 @@ env2/
 env/
 static_dev/
 debug.log
+server_files/
+Dockerfile
+permissions_conf.sh
+config.json
+.gitignore

@@ -2,7 +2,7 @@
 
 {% block content%}
 
-    <h3>Image Classifier</h3>
+    <h3 style="font-family: cursive;">Image Classifier</h3>
 
     
     <br>
@@ -17,9 +17,10 @@
  <!-- <input type="submit" value="Submit" ></div> -->
  <br>
  {% if filePathName != None %}
+ <h2>{{predictedLabel}}</h2>
  <img src={{filePathName}} alt='imagename'>
  {% endif %}
- <h2>{{predictedLabel}}</h2>
+ 
 
 
 
